@@ -6,16 +6,16 @@ import (
 	"strconv"
 )
 
+// MySqrt approximate the value of sqrt of x
 func MySqrt(x float64) float64 {
     z := float64(1)
-	prev_z := z
+	prevZ := z
 	for {
 	    z -= (z*z - x) / (2*z)
-		if math.Abs(z - prev_z) < 0.00000000000001 {
+		if math.Abs(z - prevZ) < 0.00000000000001 {
 		    return z
-		} else {
-		    prev_z = z
 		}
+		prevZ = z
 	}
 	return z
 }

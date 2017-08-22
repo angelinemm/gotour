@@ -5,7 +5,7 @@ import (
     "fmt"
 )
 
-// Walk walks the tree t sending all values
+// RecursWalk the tree t sending all values
 // from the tree to the channel ch.
 func RecursWalk(t *tree.Tree, ch chan int) {
     if t.Left != nil {
@@ -17,6 +17,9 @@ func RecursWalk(t *tree.Tree, ch chan int) {
 	}
 }
 
+// Walk the tree from the root sending all values
+// from the tree to the channel
+// and then closing the channel
 func Walk(t *tree.Tree, ch chan int) {
     RecursWalk(t, ch)
 	close(ch)

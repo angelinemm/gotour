@@ -8,10 +8,10 @@ func fibonacci() func() int {
     current := 0 
 	next := 1
 	return func() int {
-	    to_return := current
+	    toReturn := current
 		current = next
-		next = next + to_return
-		return to_return 
+		next = next + toReturn
+		return toReturn 
 	}	
 }
 

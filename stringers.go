@@ -2,9 +2,10 @@ package main
 
 import "fmt"
 
+// IPAddr modelizes an IP address
 type IPAddr [4]byte
 
-// TODO: Add a "String() string" method to IPAddr.
+// String is a stringer for ip addresses
 func (ip IPAddr) String() string {
     return fmt.Sprintf("%v.%v.%v.%v", ip[0], ip[1], ip[2], ip[3])
 }

@@ -5,17 +5,21 @@ import (
 	"sync"
 )
 
+// FetchedUrls is a map (safe with mutex) of urls 
+// that have already been fetched
 type FetchedUrls struct {
 	v   map[string]bool
 	mux sync.Mutex
 }
 
+// Add adds a url to the maps of already fetched urls
 func (urls FetchedUrls) Add(url string) {
     urls.mux.Lock()
 	urls.v[url] = true
 	urls.mux.Unlock()
 }
 
+// AlreadyFetched checks if a url has already been fetched
 func (urls FetchedUrls) AlreadyFetched(url string) bool {
     urls.mux.Lock()
 	_, ok := urls.v[url]
@@ -23,9 +27,9 @@ func (urls FetchedUrls) AlreadyFetched(url string) bool {
 	return ok
 }
 
+// Fetcher returns the body of URL and
+// a slice of URLs found on that page.
 type Fetcher interface {
-	// Fetch returns the body of URL and
-	// a slice of URLs found on that page.
 	Fetch(url string) (body string, urls []string, err error)
 }
 

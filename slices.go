@@ -2,6 +2,7 @@ package main
 
 import "golang.org/x/tour/pic"
 
+// Pic generates a picture
 func Pic(dx, dy int) [][]uint8 {
     picture := make([][]uint8, dy)
 	for y:=0; y<dy; y++ {
@@ -11,9 +12,6 @@ func Pic(dx, dy int) [][]uint8 {
 		}
 	}
 	return picture
-}
-
-func (i Image) At(x, y int) color.Color {
 }
 
 func main() {

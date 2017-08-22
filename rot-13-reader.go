@@ -11,20 +11,20 @@ type rot13Reader struct {
 	r io.Reader
 }
 
-var upper_ascii = []byte("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
-var lower_ascii = []byte("abcdefghijklmnopqrstuvwxyz")
+var upperASCII = []byte("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+var lowerASCII = []byte("abcdefghijklmnopqrstuvwxyz")
 
 func rot13(b byte) byte {
-    new_char := b
-    found_upper := bytes.IndexByte(upper_ascii, b)
-	found_lower := bytes.IndexByte(lower_ascii, b)
-	if found_upper != -1 {
-	    new_char = upper_ascii[(found_upper + 13) % 26]
+    newChar := b
+    foundUpper := bytes.IndexByte(upperASCII, b)
+	foundLower := bytes.IndexByte(lowerASCII, b)
+	if foundUpper != -1 {
+	    newChar = upperASCII[(foundUpper + 13) % 26]
 	}
-	if found_lower != -1 {
-	    new_char = lower_ascii[(found_lower + 13) % 26]
+	if foundLower != -1 {
+	    newChar = lowerASCII[(foundLower + 13) % 26]
 	}
-	return new_char
+	return newChar
 }
 
 
